@@ -1,0 +1,9 @@
+import { categories, tools } from '../data/tools';
+
+export function toolsPage() {
+  return { seo: { title: 'All Image Tools | Browser-Based Image Utilities', description: 'Search all free image tools for compression, resizing, cropping, conversion, PDF workflows, privacy cleanup, and creative edits.', path: '/tools' }, html: `<section class="page-hero site-container"><span class="eyebrow"><i class="fa-solid fa-toolbox" aria-hidden="true"></i> Complete toolkit</span><h1>All Image Tools</h1><p class="lead">Find fast image utilities grouped by task. Most implemented tools run directly in your browser.</p><input class="search-input" id="tool-search" type="search" placeholder="Search tools, formats, or categories" aria-label="Search image tools"></section><section class="section site-container" id="tools-list">${categories.map((category) => `<h2 class="category-title">${category}</h2><div class="grid grid-3">${tools.filter((tool) => tool.category === category).map((tool) => card(tool)).join('')}</div>`).join('')}</section>` };
+}
+
+function card(tool: typeof tools[number]) { return `<article class="card tool-card" data-search="${[tool.name, tool.description, tool.category, ...tool.tags].join(' ').toLowerCase()}"><span class="icon-box"><i class="fa-solid ${tool.icon.includes(' ') ? 'fa-image' : tool.icon}" aria-hidden="true"></i></span><h3>${tool.name}</h3><span class="badge">${tool.category}</span><p>${tool.description}</p><a data-link class="btn btn-secondary" href="/${tool.slug}">Open Tool</a></article>`; }
+
+export function bindToolsPage() { const input = document.querySelector('#tool-search') as HTMLInputElement | null; input?.addEventListener('input', () => { const q = input.value.trim().toLowerCase(); document.querySelectorAll<HTMLElement>('.tool-card').forEach((card) => card.classList.toggle('hidden', q.length > 0 && !card.dataset.search?.includes(q))); }); }
