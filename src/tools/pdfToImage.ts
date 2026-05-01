@@ -59,9 +59,9 @@ export function bindPdfToImage() {
         const blob = await canvasToPng(canvas);
         const url = URL.createObjectURL(blob);
         urls.push(url);
-        if (pageNumber === 1) preview.innerHTML = `<img src="${url}" alt="PDF page 1 preview">`;
+        if (pageNumber === 1) preview.innerHTML = `<img class="max-h-full max-w-full object-contain" src="${url}" alt="PDF page 1 preview">`;
         const name = slugFileName(file.name, `page-${pageNumber}`, 'png');
-        output.insertAdjacentHTML('beforeend', `<div class="notice"><strong>Page ${pageNumber}</strong><br><span>${formatBytes(blob.size)}</span><div class="actions"><button class="btn btn-secondary" data-pdf-download="${pageNumber - 1}" data-name="${name}"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PNG</button></div></div>`);
+        output.insertAdjacentHTML('beforeend', `<div class="ui-card-soft text-sm text-gray-600"><strong class="block text-gray-900">Page ${pageNumber}</strong><span>${formatBytes(blob.size)}</span><div class="mt-3"><button class="btn btn-secondary w-full" data-pdf-download="${pageNumber - 1}" data-name="${name}"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PNG</button></div></div>`);
         setStats(root, [['Pages', String(pdf.numPages)], ['Rendered', String(pageNumber)], ['Format', 'PNG']]);
       }
       output.querySelectorAll<HTMLButtonElement>('[data-pdf-download]').forEach((button) => {

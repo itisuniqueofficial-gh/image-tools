@@ -12,7 +12,7 @@ export function setPreview(root: ParentNode, blob: Blob) {
   if (old) URL.revokeObjectURL(old);
   const url = URL.createObjectURL(blob);
   preview.dataset.url = url;
-  preview.innerHTML = `<img src="${url}" alt="Processed image preview">`;
+  preview.innerHTML = `<img class="max-h-full max-w-full object-contain" src="${url}" alt="Processed image preview">`;
   return url;
 }
 
@@ -20,5 +20,5 @@ export function fileInfo(file: File) { return `${escapeHtml(file.name)} · ${for
 
 export function setStats(root: ParentNode, stats: [string, string][]) {
   const el = root.querySelector<HTMLElement>('[data-stats]');
-  if (el) el.innerHTML = stats.map(([label, value]) => `<div class="stat"><strong>${value}</strong>${label}</div>`).join('');
+  if (el) el.innerHTML = stats.map(([label, value]) => `<div class="result-box"><strong class="block text-gray-900">${value}</strong><span class="text-sm text-gray-500">${label}</span></div>`).join('');
 }
