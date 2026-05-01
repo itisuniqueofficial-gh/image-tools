@@ -15,7 +15,7 @@ function header(path: string): string {
   return `<header class="site-header sticky top-0 z-40 border-b border-gray-200 bg-white">
     <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:border focus:border-gray-200 focus:bg-white focus:px-4 focus:py-2" href="#main">Skip to content</a>
     <nav class="navbar header-inner ui-container h-16" aria-label="Primary navigation">
-      <a data-link href="/" class="brand-link inline-flex items-center gap-3 text-lg font-semibold text-gray-900" aria-label="Image Tools home"><span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-600"><i class="fa-solid fa-image" aria-hidden="true"></i></span><span>Image Tools</span></a>
+      <a data-link href="/" class="logo brand-link text-lg font-semibold text-gray-900" aria-label="Image Tools home"><span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-600"><i class="fa-solid fa-image" aria-hidden="true"></i></span><span>Image Tools</span></a>
       <button class="menu-toggle inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-700 xl:hidden" type="button" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
       <div class="nav-menu nav-links hidden absolute left-0 right-0 top-20 flex-col gap-2 rounded-2xl border border-gray-200 bg-white p-3 xl:static xl:flex xl:flex-row xl:flex-wrap xl:items-center xl:justify-end xl:border-0 xl:p-0">${links}</div>
     </nav>
