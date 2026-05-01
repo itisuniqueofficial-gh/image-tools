@@ -17,9 +17,12 @@ export function setSeo(data: SeoData): void {
   setMeta('og:description', data.description, 'property');
   setMeta('og:type', 'website', 'property');
   setMeta('og:url', canonical, 'property');
+  setMeta('og:image', `${baseUrl}/favicon.svg`, 'property');
+  setMeta('og:site_name', 'Image Tools', 'property');
   setMeta('twitter:card', 'summary_large_image');
   setMeta('twitter:title', data.title);
   setMeta('twitter:description', data.description);
+  setMeta('twitter:image', `${baseUrl}/favicon.svg`);
   setLink('canonical', canonical);
   document.querySelectorAll('script[data-json-ld]').forEach((node) => node.remove());
   if (data.jsonLd) {
